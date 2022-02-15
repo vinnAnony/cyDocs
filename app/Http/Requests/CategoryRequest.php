@@ -9,7 +9,7 @@ class CategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'category_name' => ['required'],
+            'category_name' => ['required','unique:categories'],
         ];
     }
 
@@ -17,6 +17,7 @@ class CategoryRequest extends FormRequest
     {
         return [
             'category_name.required' => 'Category name required!',
+            'category_name.unique' => 'Category name already exists!',
         ];
     }
 }
