@@ -13,21 +13,26 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
 
 Route::post('register', 'API\AuthController@register');
 Route::post('login', 'API\AuthController@login');
 
-Route::get('/documents', 'DocumentsController@index');
-Route::post('/documents', 'DocumentsController@store');
-Route::get('/document/{docId}', 'DocumentsController@show');
-Route::put('/documents', 'DocumentsController@update');
-Route::delete('/documents', 'DocumentsController@destroy');
+Route::middleware('auth:api')->group(function () {
+    Route::get('/documents', 'DocumentsController@index');
+    Route::post('/documents', 'DocumentsController@store');
+    Route::get('/document/{docId}', 'DocumentsController@show');
+    Route::put('/documents', 'DocumentsController@update');
+    Route::delete('/documents', 'DocumentsController@destroy');
 
-Route::get('/categories', 'CategoriesController@index');
-Route::post('/categories', 'CategoriesController@store');
-Route::get('/category/{docId}', 'CategoriesController@show');
-Route::put('/categories', 'CategoriesController@update');
-Route::delete('/categories', 'CategoriesController@destroy');
+    Route::get('/categories', 'CategoriesController@index');
+    Route::post('/categories', 'CategoriesController@store');
+    Route::get('/category/{categoryId}', 'CategoriesController@show');
+    Route::put('/categories', 'CategoriesController@update');
+    Route::delete('/categories', 'CategoriesController@destroy');
+});
+
+Route::get('/departments', 'DepartmentsController@index');
+Route::post('/departments', 'DepartmentsController@store');
+Route::get('/department/{departmentId}', 'DepartmentsController@show');
+Route::put('/departments', 'DepartmentsController@update');
+Route::delete('/departments', 'DepartmentsController@destroy');
