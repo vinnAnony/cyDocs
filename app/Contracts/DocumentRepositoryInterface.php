@@ -4,7 +4,7 @@ namespace App\Contracts;
 
 
 use App\Http\Requests\DocumentRequest;
-use Models\App\Document;
+use App\Models\Document;
 
 interface DocumentRepositoryInterface
 {

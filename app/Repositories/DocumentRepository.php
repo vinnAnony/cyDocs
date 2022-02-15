@@ -3,13 +3,13 @@ namespace App\Repositories;
 
 use App\Contracts\DocumentRepositoryInterface;
 use App\Http\Requests\DocumentRequest;
-use Models\App\Document;
+use App\Models\Document;
 
 class DocumentRepository implements DocumentRepositoryInterface
 {
     public function allDocuments()
     {
-        return Document::with(['category'])->paginate(5);
+        return Document::all();
     }
 
     public function createDocument(DocumentRequest $request)
@@ -29,6 +29,7 @@ class DocumentRepository implements DocumentRepositoryInterface
 
     public function deleteDocument(Document $document)
     {
+        /** @var TYPE_NAME $document */
         return $document->delete($document);
     }
 

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Contracts\DocumentRepositoryInterface;
 use App\Http\Requests\DocumentRequest;
 use Illuminate\Http\Request;
-use Models\App\Document;
+use App\Models\Document;
 
 class DocumentsController extends Controller
 {
@@ -13,7 +13,7 @@ class DocumentsController extends Controller
 
     public function __construct(DocumentRepositoryInterface $documentRepo)
     {
-        $this->$documentRepo = $documentRepo;
+        $this->documentRepo = $documentRepo;
     }
 
     public function index()

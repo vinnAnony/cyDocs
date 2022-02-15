@@ -1,6 +1,8 @@
 <?php
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
+
+use App\Models\Document;
 use App\User;
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
@@ -26,10 +28,11 @@ $factory->define(User::class, function (Faker $faker) {
     ];
 });
 
-$factory->define(\Models\App\Document::class, function (Faker $faker) {
+$factory->define(Document::class, function (Faker $faker) {
     return [
-        'document_title' => file('docs', 'site', false),
+        'document_title' => $faker->file('resources/js', 'public/assets/files', false),
         'category_id' => $faker->numberBetween(1,10),
+        'department_id' => $faker->numberBetween(1,10),
         'document_file_path' => $faker->imageUrl(400,400,null,true),
     ];
 });

@@ -20,6 +20,9 @@ class CreateDocumentsTable extends Migration
             $table->integer('department_id');
             $table->string('document_file_path');
             $table->timestamps();
+
+            $table->softDeletes($column = 'deleted_at', $precision = 0);
+
         });
     }
 
