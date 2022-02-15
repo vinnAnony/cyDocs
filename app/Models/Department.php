@@ -16,6 +16,7 @@ class Department extends Model
 
     public function documents()
     {
-        return $this->hasMany(Category::class)->latest();
+        return $this->belongsToMany(Document::class, 'department_documents',
+            'department_id', 'document_id');
     }
 }

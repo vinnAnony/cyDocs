@@ -9,9 +9,9 @@ class DocumentRequest extends FormRequest
     public function rules()
     {
         return [
-            'document_name' => ['required', 'string', 'max:55'],
-            'document_category' => ['required',],
-            'document_department' => ['required'],
+            'document_title' => ['required', 'string', 'max:55'],
+            'category_id' => ['required'],
+            'department_id' => ['required'],
         ];
     }
 
@@ -19,8 +19,8 @@ class DocumentRequest extends FormRequest
     {
         return [
             'document_name.required' => 'Document name required!',
-            'document_category.required' => 'Category name required!',
-            'document_department.required' => 'Document department required!',
+            'category_id.required' => 'Category name required!',
+            'department_id.required' => 'Document department required!',
         ];
     }
 }
