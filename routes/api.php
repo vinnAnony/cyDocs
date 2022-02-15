@@ -29,10 +29,10 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/category/{categoryId}', 'CategoriesController@show');
     Route::put('/categories', 'CategoriesController@update');
     Route::delete('/categories', 'CategoriesController@destroy');
-});
 
-Route::get('/departments', 'DepartmentsController@index');
-Route::post('/departments', 'DepartmentsController@store');
-Route::get('/department/{departmentId}', 'DepartmentsController@show');
-Route::put('/departments', 'DepartmentsController@update');
-Route::delete('/departments', 'DepartmentsController@destroy');
+    Route::get('/departments', 'DepartmentsController@index');
+    Route::post('/departments', 'DepartmentsController@store');
+    Route::get('/department/{departmentId}', 'DepartmentsController@show');
+    Route::put('/departments', 'DepartmentsController@update');
+    Route::delete('/departments', 'DepartmentsController@destroy');
+});
