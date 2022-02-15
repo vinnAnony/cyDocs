@@ -36,3 +36,9 @@ $factory->define(Document::class, function (Faker $faker) {
         'document_file_path' => $faker->imageUrl(400,400,null,true),
     ];
 });
+
+$factory->define(\App\Models\Category::class, function (Faker $faker) {
+    return [
+        'category_name' => $faker->text(20),
+    ];
+});
