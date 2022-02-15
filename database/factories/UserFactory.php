@@ -25,3 +25,11 @@ $factory->define(User::class, function (Faker $faker) {
         'remember_token' => Str::random(10),
     ];
 });
+
+$factory->define(\Models\App\Document::class, function (Faker $faker) {
+    return [
+        'document_title' => file('docs', 'site', false),
+        'category_id' => $faker->numberBetween(1,10),
+        'document_file_path' => $faker->imageUrl(400,400,null,true),
+    ];
+});

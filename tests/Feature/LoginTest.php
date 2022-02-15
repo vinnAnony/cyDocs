@@ -11,11 +11,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 class LoginTest extends TestCase
 {
     use DatabaseMigrations;
-    /**
- * A basic feature test example.
- *
- * @return void
- */
+
     public function test_login_with_correct_credentials()
     {
         $user = factory(User::class)->create([
