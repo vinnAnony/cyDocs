@@ -9,7 +9,7 @@ class DepartmentRequest extends FormRequest
     public function rules()
     {
         return [
-            'department_name' => ['required','unique:departments,department_name'],
+            'department_name' => ['required','unique:departments,department_name,'.$this->get('id')],
         ];
     }
 

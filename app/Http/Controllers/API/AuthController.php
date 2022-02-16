@@ -2,43 +2,31 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Contracts\DocumentRepositoryInterface;
+use App\Contracts\UserRepositoryInterface;
+use App\Http\Requests\UserRequest;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class AuthController extends Controller
 {
-    public function register(Request $request)
+
+    protected $userRepo;
+
+    public function __construct(UserRepositoryInterface $userRepo)
     {
-        $this->validate($request, [
-            'name' => 'required|min:4',
-            'email' => 'required|email',
-            'password' => 'required|min:8',
-        ]);
+        $this->userRepo = $userRepo;
+    }
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => bcrypt($request->password)
-        ]);
-
-        $token = $user->createToken('CyDocsToken')->accessToken;
-
+    public function register(UserRequest $request)
+    {
+        $token = $this->userRepo->register($request);
         return response()->json(['token' => $token], 200);
     }
 
-    public function login(Request $request)
+    public function login(UserRequest $request)
     {
-        $data = [
-            'email' => $request->email,
-            'password' => $request->password
-        ];
-
-        if (auth()->attempt($data)) {
-            $token = auth()->user()->createToken('CyDocsToken')->accessToken;
-            return response()->json(['token' => $token], 200);
-        } else {
-            return response()->json(['error' => 'Unauthorised'], 401);
-        }
+        $this->userRepo->login($request);
     }
 }
