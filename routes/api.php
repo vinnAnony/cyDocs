@@ -18,22 +18,22 @@ Route::post('register', 'API\AuthController@register');
 Route::post('login', 'API\AuthController@login');
 
 Route::middleware('auth:api')->group(function () {
-    Route::get('/documents', 'DocumentsController@index');
-    Route::post('/documents', 'DocumentsController@store');
-    Route::get('/document/{docId}', 'DocumentsController@show');
-    Route::put('/documents', 'DocumentsController@update');
-    Route::delete('/documents', 'DocumentsController@destroy');
+    Route::get('/documents', 'API\DocumentsController@index');
+    Route::post('/documents', 'API\DocumentsController@store');
+    Route::get('/document/{docId}', 'API\DocumentsController@show');
+    Route::put('/documents', 'API\DocumentsController@update');
+    Route::delete('/documents', 'API\DocumentsController@destroy');
 
-    Route::get('/categories', 'CategoriesController@index');
-    Route::post('/categories', 'CategoriesController@store');
-    Route::get('/category/{categoryId}', 'CategoriesController@show');
-    Route::put('/categories', 'CategoriesController@update');
-    Route::delete('/categories', 'CategoriesController@destroy');
+    Route::get('/categories', 'API\CategoriesController@index');
+    Route::post('/categories', 'API\CategoriesController@store');
+    Route::get('/category/{categoryId}', 'API\CategoriesController@show');
+    Route::put('/categories', 'API\CategoriesController@update');
+    Route::delete('/categories', 'API\CategoriesController@destroy');
 
-    Route::get('/departments', 'DepartmentsController@index');
-    Route::post('/departments', 'DepartmentsController@store');
-    Route::get('/department/{departmentId}', 'DepartmentsController@show');
-    Route::put('/departments', 'DepartmentsController@update');
-    Route::delete('/departments', 'DepartmentsController@destroy');
-    Route::get('/department-documents/{departmentId}', 'DepartmentsController@fetchDepartmentDocuments');
+    Route::get('/departments', 'API\DepartmentsController@index');
+    Route::post('/departments', 'API\DepartmentsController@store');
+    Route::get('/department/{departmentId}', 'API\DepartmentsController@show');
+    Route::put('/departments', 'API\DepartmentsController@update');
+    Route::delete('/departments', 'API\DepartmentsController@destroy');
+    Route::get('/department-documents/{departmentId}', 'API\DepartmentsController@fetchDepartmentDocuments');
 });

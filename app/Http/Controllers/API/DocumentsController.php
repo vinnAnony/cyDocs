@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
 use App\Contracts\DocumentRepositoryInterface;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\DocumentRequest;
 use Illuminate\Http\Request;
 use App\Models\Document;
