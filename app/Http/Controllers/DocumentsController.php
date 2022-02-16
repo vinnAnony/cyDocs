@@ -25,6 +25,7 @@ class DocumentsController extends Controller
     public function store(DocumentRequest $request)
     {
         $document = $this->documentRepo->createDocument($request);
+        $document->department()->attach($document->department_id);
         return response()->json($document, 201);
     }
 

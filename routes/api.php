@@ -35,4 +35,5 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/department/{departmentId}', 'DepartmentsController@show');
     Route::put('/departments', 'DepartmentsController@update');
     Route::delete('/departments', 'DepartmentsController@destroy');
+    Route::get('/department-documents/{departmentId}', 'DepartmentsController@fetchDepartmentDocuments');
 });

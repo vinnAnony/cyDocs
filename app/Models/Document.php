@@ -13,7 +13,8 @@ class Document extends Model
         [
             'document_title',
             'category_id',
-            'department_id'
+            'department_id',
+            'document_file_path',
         ];
 
     public function category()
@@ -21,7 +22,7 @@ class Document extends Model
         return $this->belongsTo(Category::class, 'category_id');
     }
 
-    public function departments()
+    public function department()
     {
         return $this->belongsToMany(Department::class, 'department_documents',
             'document_id', 'department_id');

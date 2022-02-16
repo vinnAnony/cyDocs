@@ -33,4 +33,14 @@ class DepartmentRepository implements DepartmentRepositoryInterface
         /** @var TYPE_NAME $department */
         return $department->delete($department);
     }
+
+    public function fetchDepartmentCategories($id)
+    {
+        return Department::with('categories')->first();
+    }
+
+    public function fetchDepartmentDocuments($id)
+    {
+        return Department::where('id', $id)->with('documents')->get();
+    }
 }
