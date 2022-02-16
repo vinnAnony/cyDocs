@@ -4,6 +4,7 @@ namespace App\Repositories;
 use App\Contracts\UserRepositoryInterface;
 use App\Http\Requests\UserRequest;
 use App\User;
+use Illuminate\Http\Request;
 
 class UserRepository implements UserRepositoryInterface
 {
@@ -30,22 +31,32 @@ class UserRepository implements UserRepositoryInterface
             'password' => bcrypt($request->password)
         ]);
 
-        return $user->createToken('CyDocsToken')->accessToken;
+        $token = $user->createToken('CyDocsToken')->accessToken;
+        return response()->json([
+            'success' => true,
+            'message' => 'Successful sign up',
+            'token' => $token
+        ],200);
     }
 
-    public function login(UserRequest $request)
+    public function login(Request $request)
     {
-        $request = $request->except(['name']);
         $data = [
             'email' => $request->email,
             'password' => $request->password
         ];
-
         if (auth()->attempt($data)) {
             $token = auth()->user()->createToken('CyDocsToken')->accessToken;
-            return response()->json(['token' => $token], 200);
+            return response()->json([
+                'success' => true,
+                'message' => 'Successful login',
+                'token' => $token
+            ],200);
         } else {
-            return response()->json(['error' => 'Unauthorised'], 401);
+            return response()->json([
+                'success' => false,
+                'message' => 'Unauthorized'
+            ],200);
         }
     }
 

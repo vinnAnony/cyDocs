@@ -21,12 +21,13 @@ class AuthController extends Controller
 
     public function register(UserRequest $request)
     {
-        $token = $this->userRepo->register($request);
-        return response()->json(['token' => $token], 200);
+        $response = $this->userRepo->register($request);
+        return response()->json($response);
     }
 
-    public function login(UserRequest $request)
+    public function login(Request $request)
     {
-        $this->userRepo->login($request);
+        $response = $this->userRepo->login($request);
+        return response()->json($response);
     }
 }

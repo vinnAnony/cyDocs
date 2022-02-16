@@ -15,9 +15,6 @@
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
-
 </head>
 <body class="bg-gray-100 h-screen antialiased leading-none font-sans" {{ session('message') ? 'data-notification' : '' }} data-notification-type='success' data-notification-message="{{ json_encode(session('message')) }}">
 <div id="app">
@@ -77,22 +74,8 @@
     @yield('content')
 </div>
 
-<script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
+<script src="{{ asset('js/jquery.js') }}"></script>
 <script type="text/javascript">
-    function deleteConfirmation() {
-        swal({
-            title: "Do you want to delete task?",
-            type: "warning",
-            showCancelButton: true,
-            confirmButtonColor: '#d64c58',
-            confirmButtonText: "Delete",
-            cancelButtonText: "Cancel",
-        }).then(function (value) {
-            if (value) {
-                document.getElementById('deleteTaskForm').submit();
-            }
-        });
-    }
     $(document).ready(function() {
 
         const menu = document.getElementById('mobile-menu');

@@ -5,6 +5,7 @@ namespace App\Contracts;
 
 use App\Http\Requests\UserRequest;
 use App\User;
+use Illuminate\Http\Request;
 
 interface UserRepositoryInterface
 {
@@ -16,7 +17,7 @@ interface UserRepositoryInterface
 
     public function register(UserRequest $request);
 
-    public function login(UserRequest $request);
+    public function login(Request $request);
 
     public function updateUser(UserRequest $request, User $user);
 
