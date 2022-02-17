@@ -46,4 +46,11 @@ class CategoriesController extends Controller
         $category = $this->categoryRepo->deleteCategory($category);
         return response()->json($category, 200);
     }
+
+    public function fetchCategoryDocuments($id)
+    {
+        $category = $this->categoryRepo->fetchCategoryDocuments($id);
+        dd($category);
+        return response()->json($category, 200);
+    }
 }

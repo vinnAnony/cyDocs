@@ -21,10 +21,4 @@ class Document extends Model
     {
         return $this->belongsTo(Category::class, 'category_id');
     }
-
-    public function department()
-    {
-        return $this->belongsToMany(Department::class, 'department_documents',
-            'document_id', 'department_id');
-    }
 }

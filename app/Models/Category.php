@@ -14,6 +14,11 @@ class Category extends Model
             'category_name'
         ];
 
+    public function department()
+    {
+        return $this->belongsTo(Department::class, 'department_id');
+    }
+
     public function documents()
     {
         return $this->hasMany(Document::class)->latest();

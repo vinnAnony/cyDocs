@@ -13,12 +13,6 @@ class Department extends Model
             'department_name'
         ];
 
-    public function documents()
-    {
-        return $this->belongsToMany(Document::class, 'department_documents',
-            'department_id', 'document_id');
-    }
-
     public function categories()
     {
         return $this->hasMany(Category::class)->latest();

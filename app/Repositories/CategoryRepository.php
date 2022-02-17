@@ -35,4 +35,9 @@ class CategoryRepository implements CategoryRepositoryInterface
         /** @var TYPE_NAME $category */
         return $category->delete($category);
     }
+
+    public function fetchCategoryDocuments($id)
+    {
+        return Category::where('id', $id)->with('documents')->get();
+    }
 }
