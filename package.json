@@ -41,6 +41,7 @@
     },
     "dependencies": {
         "vue-sweetalert2": "^5.0.2",
-        "vuelidate": "^0.7.7"
+        "vuelidate": "^0.7.7",
+        "vuetify": "^2.6.3"
     }
 }
