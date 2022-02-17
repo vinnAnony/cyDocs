@@ -63,7 +63,7 @@ class UserRepository implements UserRepositoryInterface
         }
     }
 
-    public function updateUser(UserRequest $request, User $user)
+    public function updateUser(Request $request, User $user)
     {
         return $user->update($request->all());
     }

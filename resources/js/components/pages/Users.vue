@@ -148,6 +148,7 @@
             closeModal(){
                 this.$refs.userModal.close();
                 this.editedUser={};
+                this.editedIndex = -1;
             },
             editUser (user) {
                 url.put("users/" + user.id,user)
@@ -156,7 +157,6 @@
                         {
                             cyDocsAlert('success',response.data.message);
                             this.closeModal();
-                            console.log(response.data.message);
                             this.editedIndex = this.users.indexOf(user);
                             this.editedUser = Object.assign({}, user);
                         }

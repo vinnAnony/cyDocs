@@ -25,6 +25,22 @@ class AuthController extends Controller
         return response()->json($response);
     }
 
+    public function updateUser(Request $request, User $user)
+    {
+        $response = $this->userRepo->updateUser($request, $user);
+        if ($response){
+            return response()->json([
+                'success' => true,
+                'message' => 'User info updated'
+            ],200);
+        }else{
+            return response()->json([
+                'success' => false,
+                'message' => 'An error occurred'
+            ],200);
+        }
+    }
+
     public function register(UserRequest $request)
     {
         $response = $this->userRepo->register($request);

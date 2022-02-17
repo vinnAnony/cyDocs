@@ -19,7 +19,7 @@ interface UserRepositoryInterface
 
     public function login(Request $request);
 
-    public function updateUser(UserRequest $request, User $user);
+    public function updateUser(Request $request, User $user);
 
     public function deleteUser(User $user);
 }

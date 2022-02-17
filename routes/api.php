@@ -19,6 +19,7 @@ Route::post('login', 'API\AuthController@login');
 
 Route::middleware('auth:api')->group(function () {
     Route::get('/users', 'API\AuthController@fetchAllUsers');
+    Route::put('/users/{user}', 'API\AuthController@updateUser');
 
     Route::get('/documents', 'API\DocumentsController@index');
     Route::post('/documents', 'API\DocumentsController@store');
