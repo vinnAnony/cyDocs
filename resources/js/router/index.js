@@ -6,6 +6,11 @@ import Login from "../components/auth/Login";
 import SignUp from "../components/auth/SignUp";
 import Welcome from "../components/pages/Welcome";
 import Dashboard from "../components/pages/Dashboard";
+import MyDocuments from "../components/pages/MyDocuments";
+import FileManager from "../components/pages/FileManager";
+import FileRequests from "../components/pages/FileRequests";
+import Users from "../components/pages/Users";
+import Configuration from "../components/pages/Configuration";
 
 
 const routes = [
@@ -37,6 +42,46 @@ const routes = [
         path: '/dashboard',
         name: 'dashboard',
         component: Vue.component("dashboard-component",Dashboard),
+        meta: {
+            requiresAuth: true
+        }
+    },
+    {
+        path: '/my-documents',
+        name: 'my-documents',
+        component: Vue.component("dashboard-component",MyDocuments),
+        meta: {
+            requiresAuth: true
+        }
+    },
+    {
+        path: '/file-manager',
+        name: 'file-manager',
+        component: Vue.component("dashboard-component",FileManager),
+        meta: {
+            requiresAuth: true
+        }
+    },
+    {
+        path: '/file-requests',
+        name: 'file-requests',
+        component: Vue.component("dashboard-component",FileRequests),
+        meta: {
+            requiresAuth: true
+        }
+    },
+    {
+        path: '/users',
+        name: 'users',
+        component: Vue.component("dashboard-component",Users),
+        meta: {
+            requiresAuth: true
+        }
+    },
+    {
+        path: '/configuration',
+        name: 'configuration',
+        component: Vue.component("dashboard-component",Configuration),
         meta: {
             requiresAuth: true
         }

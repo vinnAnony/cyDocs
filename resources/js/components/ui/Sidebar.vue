@@ -77,13 +77,13 @@
 
                 <ul class="md:flex-col md:min-w-full flex flex-col list-none">
                     <li class="items-center">
-                        <router-link :to="{name:'cydocs-users'}" class="px-2 text-blueGray-700 hover:text-purple-500 outline outline-offset-2 outline-blue-500 text-xs uppercase py-3 font-bold block">
+                        <router-link :to="{name:'users'}" class="px-2 text-blueGray-700 hover:text-purple-500 outline outline-offset-2 outline-blue-500 text-xs uppercase py-3 font-bold block">
                             <font-awesome-icon icon="paint-brush" class="opacity-75 mr-2 text-sm"/>
                             Users
                         </router-link>
                     </li>
                     <li class="items-center">
-                        <router-link :to="{name:'cydocs-config'}" class="px-2 text-blueGray-700 hover:text-purple-500 outline outline-offset-2 outline-blue-500 text-xs uppercase py-3 font-bold block">
+                        <router-link :to="{name:'configuration'}" class="px-2 text-blueGray-700 hover:text-purple-500 outline outline-offset-2 outline-blue-500 text-xs uppercase py-3 font-bold block">
                             <font-awesome-icon icon="cogs" class="opacity-75 mr-2 text-sm"/>
                             Configuration
                         </router-link>
