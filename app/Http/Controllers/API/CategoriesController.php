@@ -50,7 +50,13 @@ class CategoriesController extends Controller
     public function fetchCategoryDocuments($id)
     {
         $category = $this->categoryRepo->fetchCategoryDocuments($id);
-        dd($category);
+        return response()->json($category, 200);
+    }
+
+
+    public function fetchDepartmentCategories($id)
+    {
+        $category = $this->categoryRepo->fetchDepartmentCategories($id);
         return response()->json($category, 200);
     }
 }

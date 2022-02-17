@@ -40,4 +40,9 @@ class CategoryRepository implements CategoryRepositoryInterface
     {
         return Category::where('id', $id)->with('documents')->get();
     }
+
+    public function fetchDepartmentCategories($id)
+    {
+        return Category::where('department_id', $id)->get();
+    }
 }

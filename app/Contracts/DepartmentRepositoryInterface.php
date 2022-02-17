@@ -12,8 +12,6 @@ interface DepartmentRepositoryInterface
 
     public function showDepartment($id);
 
-    public function fetchDepartmentCategories($id);
-
     public function fetchDepartmentDocuments($id);
 
     public function createDepartment(DepartmentRequest $request);

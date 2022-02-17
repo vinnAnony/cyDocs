@@ -30,6 +30,7 @@ Route::middleware('auth:api')->group(function () {
     Route::put('/categories/{category}', 'API\CategoriesController@update');
     Route::delete('/categories', 'API\CategoriesController@destroy');
     Route::get('/category-documents/{categoryId}', 'API\CategoriesController@fetchCategoryDocuments');
+    Route::get('/department-categories/{departmentId}', 'API\CategoriesController@fetchDepartmentCategories');
 
     Route::get('/departments', 'API\DepartmentsController@index');
     Route::post('/departments', 'API\DepartmentsController@store');

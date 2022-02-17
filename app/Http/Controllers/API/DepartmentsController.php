@@ -47,15 +47,4 @@ class DepartmentsController extends Controller
         return response()->json($department, 200);
     }
 
-    public function fetchDepartmentCategories($id)
-    {
-        $department = $this->departmentRepo->fetchDepartmentCategories($id);
-        return response()->json($department, 200);
-    }
-
-    public function fetchDepartmentDocuments($id)
-    {
-        $department = $this->departmentRepo->fetchDepartmentDocuments($id);
-        return response()->json($department, 200);
-    }
 }

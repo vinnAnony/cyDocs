@@ -14,6 +14,8 @@ interface CategoryRepositoryInterface
 
     public function fetchCategoryDocuments($id);
 
+    public function fetchDepartmentCategories($id);
+
     public function createCategory(CategoryRequest $request);
 
     public function updateCategory(CategoryRequest $request, Category $category);
