@@ -30,12 +30,13 @@ class UserRepository implements UserRepositoryInterface
             'email' => $request->email,
             'password' => bcrypt($request->password)
         ]);
+        $userData = User::latest()->first();
 
         $token = $user->createToken('CyDocsToken')->accessToken;
         return response()->json([
             'success' => true,
             'message' => 'Successful sign up',
-            'user' => auth()->user(),
+            'user' => $userData,
             'token' => $token,
         ],200);
     }

@@ -3,8 +3,23 @@
 </template>
 
 <script>
+    import url from "../../utils/http";
+
     export default {
-        name: "MyDocuments"
+        name: "MyDocuments",
+        data(){
+            return{
+                myDocuments:[],
+                myDocument:{}
+            }
+        },
+        beforeMount(){
+            url.get("user-documents/",)
+                .then((response)=>
+                {
+                    this.users = response.data;
+                })
+        },
     }
 </script>
 

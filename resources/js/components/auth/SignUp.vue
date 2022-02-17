@@ -62,6 +62,8 @@
 
                         if (response.data.original.success){
                             this.signUpData = {};
+                            this.$store.dispatch('auth/login',response.data.original);
+                            this.$router.push('/dashboard');
                         }
                     })
                     .catch(error => {

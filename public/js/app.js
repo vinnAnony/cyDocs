@@ -18427,6 +18427,10 @@ __webpack_require__.r(__webpack_exports__);
 
         if (response.data.original.success) {
           _this.signUpData = {};
+
+          _this.$store.dispatch('auth/login', response.data.original);
+
+          _this.$router.push('/dashboard');
         }
       })["catch"](function (error) {
         var errors = error.response.data.errors;
@@ -18544,12 +18548,27 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _utils_http__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../utils/http */ "./resources/js/utils/http.js");
 //
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "MyDocuments"
+  name: "MyDocuments",
+  data: function data() {
+    return {
+      myDocuments: [],
+      myDocument: {}
+    };
+  },
+  beforeMount: function beforeMount() {
+    var _this = this;
+
+    _utils_http__WEBPACK_IMPORTED_MODULE_0__["default"].get("user-documents/").then(function (response) {
+      _this.users = response.data;
+    });
+  }
 });
 
 /***/ }),
@@ -39638,7 +39657,7 @@ var url = axios.create({
   baseURL: 'http://cyDocs.appp/api/',
   headers: {
     'Accept': 'application/json',
-    'Authorization': "Bearer ".concat(localStorage.getItem('user') != null ? JSON.parse(localStorage.getItem('jwToken')) : null)
+    'Authorization': "Bearer ".concat(localStorage.getItem('user') != null ? JSON.parse(localStorage.getItem('cyDocsToken')) : null)
   }
 });
 /* harmony default export */ __webpack_exports__["default"] = (url);
