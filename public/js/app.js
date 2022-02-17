@@ -18558,6 +18558,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "DefaultNavbar",
@@ -20705,12 +20715,29 @@ var render = function () {
           { staticClass: "hidden sm:flex flex-row space-x-4" },
           [
             !_vm.authState.loggedIn
+              ? _c("router-link", { attrs: { to: { name: "signup" } } }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass:
+                        "rounded-md flex space-x-2 w-24 h-10 font-normal text-sm leading-3 text-white bg-transparent border border-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 focus:bg-indigo-600 hover:bg-indigo-600 duration-150 justify-center items-center",
+                    },
+                    [
+                      _vm._v(
+                        "\n                        Sign Up\n                    "
+                      ),
+                    ]
+                  ),
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            !_vm.authState.loggedIn
               ? _c("router-link", { attrs: { to: { name: "login" } } }, [
                   _c(
                     "button",
                     {
                       staticClass:
-                        "rounded-md flex space-x-2 w-24 h-10 font-normal text-sm leading-3 bg-indigo-500 text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 focus:bg-indigo-600 hover:bg-indigo-600 duration-150 justify-center items-center",
+                        "rounded-md flex space-x-2 w-24 h-10 font-normal text-sm leading-3 text-white bg-transparent border border-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 focus:bg-indigo-600 hover:bg-indigo-600 duration-150 justify-center items-center",
                     },
                     [
                       _vm._v(
@@ -20792,12 +20819,27 @@ var render = function () {
             "div",
             { staticClass: "flex flex-col gap-4 mt-4 w-full mx-2 mx-auto" },
             [
+              _c("router-link", { attrs: { to: { name: "signup" } } }, [
+                _c(
+                  "button",
+                  {
+                    staticClass:
+                      "rounded-md flex space-x-2 w-full h-10 font-normal text-sm leading-3 text-white bg-transparent border border-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 focus:bg-indigo-600 hover:bg-indigo-600 duration-150 justify-center items-center",
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Sign In\n                    "
+                    ),
+                  ]
+                ),
+              ]),
+              _vm._v(" "),
               _c("router-link", { attrs: { to: { name: "login" } } }, [
                 _c(
                   "button",
                   {
                     staticClass:
-                      "rounded-md flex space-x-2 w-full h-10 font-normal text-sm leading-3 text-white bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 focus:bg-indigo-600 hover:bg-indigo-600 duration-150 justify-center items-center",
+                      "rounded-md flex space-x-2 w-full h-10 font-normal text-sm leading-3 text-white bg-transparent border border-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 focus:bg-indigo-600 hover:bg-indigo-600 duration-150 justify-center items-center",
                   },
                   [
                     _vm._v(
