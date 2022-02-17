@@ -18,6 +18,8 @@ Route::post('register', 'API\AuthController@register');
 Route::post('login', 'API\AuthController@login');
 
 Route::middleware('auth:api')->group(function () {
+    Route::get('/users', 'API\AuthController@fetchAllUsers');
+
     Route::get('/documents', 'API\DocumentsController@index');
     Route::post('/documents', 'API\DocumentsController@store');
     Route::get('/document/{docId}', 'API\DocumentsController@show');

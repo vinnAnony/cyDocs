@@ -10,7 +10,7 @@ class UserRepository implements UserRepositoryInterface
 {
     public function allUsers()
     {
-        return User::all();
+        return User::with('department')->get();
     }
 
     public function showUser($id)

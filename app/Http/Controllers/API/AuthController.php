@@ -19,6 +19,12 @@ class AuthController extends Controller
         $this->userRepo = $userRepo;
     }
 
+    public function fetchAllUsers()
+    {
+        $response = $this->userRepo->allUsers();
+        return response()->json($response);
+    }
+
     public function register(UserRequest $request)
     {
         $response = $this->userRepo->register($request);
