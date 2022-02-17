@@ -11,12 +11,12 @@
 
             <a class="md:block text-left md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0"
                     href="javascript:void(0)">
-                Tv Shower
+                CyDocs
             </a>
 
             <ul class="md:hidden items-center flex flex-wrap list-none">
                 <li class="inline-block relative">
-                    {{user.username}}
+                    {{user.name}}
                 </li>
             </ul>
 
@@ -28,7 +28,7 @@
                         <div class="w-6/12">
                             <a class="md:block text-left md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0"
                                     href="javascript:void(0)">
-                                Tv Shower
+                                CyDocs
                             </a>
                         </div>
                         <div class="w-6/12 flex justify-end">
@@ -50,21 +50,21 @@
                         </router-link>
                     </li>
                     <li class="items-center">
-                        <router-link :to="{name:'admin-movies'}" class="px-2 text-blueGray-700 hover:text-purple-500 text-xs uppercase py-3 font-bold block">
+                        <router-link :to="{name:'my-documents'}" class="px-2 text-blueGray-700 hover:text-purple-500 text-xs uppercase py-3 font-bold block">
                             <font-awesome-icon icon="tv" class="opacity-75 mr-2 text-sm"/>
-                            Movies
+                            My Documents
                         </router-link>
                     </li>
                     <li class="items-center">
-                        <router-link :to="{name:'admin-genres'}" class="px-2 text-blueGray-700 hover:text-purple-500 text-xs uppercase py-3 font-bold block">
+                        <router-link :to="{name:'file-manager'}" class="px-2 text-blueGray-700 hover:text-purple-500 text-xs uppercase py-3 font-bold block">
                             <font-awesome-icon icon="film" class="opacity-75 mr-2 text-sm"/>
-                            Genres
+                            File Management
                         </router-link>
                     </li>
                     <li class="items-center">
-                        <router-link :to="{name:'admin-subscriptions'}" class="px-2 text-blueGray-700 hover:text-purple-500 text-xs uppercase py-3 font-bold block">
+                        <router-link :to="{name:'file-requests'}" class="px-2 text-blueGray-700 hover:text-purple-500 text-xs uppercase py-3 font-bold block">
                             <font-awesome-icon icon="rocket" class="opacity-75 mr-2 text-sm"/>
-                            Subscriptions
+                            File Requests
                         </router-link>
                     </li>
                 </ul>
@@ -77,9 +77,15 @@
 
                 <ul class="md:flex-col md:min-w-full flex flex-col list-none">
                     <li class="items-center">
-                        <router-link :to="{name:'admin-users'}" class="px-2 text-blueGray-700 hover:text-purple-500 outline outline-offset-2 outline-blue-500 text-xs uppercase py-3 font-bold block">
+                        <router-link :to="{name:'cydocs-users'}" class="px-2 text-blueGray-700 hover:text-purple-500 outline outline-offset-2 outline-blue-500 text-xs uppercase py-3 font-bold block">
                             <font-awesome-icon icon="paint-brush" class="opacity-75 mr-2 text-sm"/>
                             Users
+                        </router-link>
+                    </li>
+                    <li class="items-center">
+                        <router-link :to="{name:'cydocs-config'}" class="px-2 text-blueGray-700 hover:text-purple-500 outline outline-offset-2 outline-blue-500 text-xs uppercase py-3 font-bold block">
+                            <font-awesome-icon icon="cogs" class="opacity-75 mr-2 text-sm"/>
+                            Configuration
                         </router-link>
                     </li>
                 </ul>
@@ -100,9 +106,10 @@
 
 <script>
     import {mapGetters} from "vuex";
+    import {cyDocsAlert} from "../../utils/alert";
 
     export default {
-        name: "AdminSidebar",
+        name: "Sidebar",
         data() {
             return {
                 collapseShow: "hidden"
@@ -113,28 +120,21 @@
                 this.collapseShow = classes;
             },
             logOut(){
-                // Vue.swal({
-                //     text: "Are you sure you want to logout?",
-                //     icon: 'warning',
-                //     showCancelButton: true,
-                //     confirmButtonColor: '#57d675',
-                //     cancelButtonColor: '#d33',
-                //     confirmButtonText: 'Yes'
-                // }).then((result) => {
-                //     if (result.isConfirmed) {
-                //         this.$router.push('/');
-                //         this.$store.dispatch('auth/logout');
-                //
-                //         Vue.swal({
-                //             toast: true,
-                //             position: 'top-end',
-                //             showConfirmButton: false,
-                //             timer: 3000,
-                //             icon: 'success',
-                //             title: 'Successfully logged out.'
-                //         });
-                //     }
-                // });
+                Vue.swal({
+                    text: "Are you sure you want to logout?",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#57d675',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        this.$router.push('/');
+                        this.$store.dispatch('auth/logout');
+
+                        cyDocsAlert('success','Successfully logged out.');
+                    }
+                });
             }
         },
         computed:{

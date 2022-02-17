@@ -35,7 +35,8 @@ class UserRepository implements UserRepositoryInterface
         return response()->json([
             'success' => true,
             'message' => 'Successful sign up',
-            'token' => $token
+            'user' => auth()->user(),
+            'token' => $token,
         ],200);
     }
 
@@ -50,7 +51,8 @@ class UserRepository implements UserRepositoryInterface
             return response()->json([
                 'success' => true,
                 'message' => 'Successful login',
-                'token' => $token
+                'user' => auth()->user(),
+                'token' => $token,
             ],200);
         } else {
             return response()->json([

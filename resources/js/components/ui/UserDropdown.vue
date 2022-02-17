@@ -5,8 +5,8 @@
                 ref="btnDropdownRef">
             <div class="flex items-center">
                 <span class="h-12 text-sm text-white bg-blueGray-200 inline-flex items-center justify-center rounded-full">
-                  <p class="w-full rounded-full align-middle border-none shadow-lg">
-                      {{user.username}} <font-awesome-icon icon="angle-down" />
+                  <p class="w-full rounded-full align-middle border-none shadow-lg select-none">
+                      {{user.name}} <font-awesome-icon icon="angle-down" />
                   </p>
                 </span>
             </div>
@@ -28,8 +28,9 @@
 <script>
     import { createPopper } from "@popperjs/core";
     import {mapGetters} from "vuex";
+    import {cyDocsAlert} from "../../utils/alert";
     export default {
-        name: "AdminUserDropdown",
+        name: "UserDropdown",
         data(){
             return{
                 dropdownPopoverShow: false
@@ -48,28 +49,21 @@
                 }
             },
             logOut(){
-                // Vue.swal({
-                //     text: "Are you sure you want to logout?",
-                //     icon: 'warning',
-                //     showCancelButton: true,
-                //     confirmButtonColor: '#57d675',
-                //     cancelButtonColor: '#d33',
-                //     confirmButtonText: 'Yes'
-                // }).then((result) => {
-                //     if (result.isConfirmed) {
-                //         this.$router.push('/');
-                //         this.$store.dispatch('auth/logout');
-                //
-                //         Vue.swal({
-                //             toast: true,
-                //             position: 'top-end',
-                //             showConfirmButton: false,
-                //             timer: 3000,
-                //             icon: 'success',
-                //             title: 'Successfully logged out.'
-                //         });
-                //     }
-                // });
+                Vue.swal({
+                    text: "Are you sure you want to logout?",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#57d675',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        this.$store.dispatch('auth/logout');
+                        this.$router.push({ name: 'welcome' });
+
+                        cyDocsAlert('success','Successfully logged out.');
+                    }
+                });
             }
         },
         computed:{

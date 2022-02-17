@@ -3,17 +3,17 @@
         <div class="w-full mx-auto items-center flex justify-between md:flex-nowrap flex-wrap md:px-10 px-4">
             <p class="font-semibold text-white">Dashboard</p>
             <ul class="float-right flex-col md:flex-row list-none items-center hidden md:flex">
-                <admin-user-dropdown/>
+                <userdropdown-component/>
             </ul>
         </div>
     </nav>
 </template>
 
 <script>
-    import AdminUserDropdown from "./AdminUserDropdown";
+    import UserDropdown from "./UserDropdown";
     export default {
-        name: "AdminNavBar",
-        components: {AdminUserDropdown}
+        name: "NavBar",
+        components: {UserDropdown}
     }
 </script>
 

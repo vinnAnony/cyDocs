@@ -2,6 +2,7 @@
   <dictionary name="vmbugua">
     <words>
       <w>axios</w>
+      <w>sweetalert</w>
       <w>tailwindcss</w>
     </words>
   </dictionary>

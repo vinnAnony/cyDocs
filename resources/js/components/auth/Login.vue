@@ -22,12 +22,15 @@
                 <div class="py-5">
                     <div class="grid grid-cols-1">
                         <div class="text-center sm:text-left whitespace-nowrap">
-                            <button @click="$emit('switchView')" class="transition duration-200 mx-5 px-5 py-4 cursor-pointer font-normal text-sm rounded-lg text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-200 focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 ring-inset">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-4 h-4 inline-block align-text-top">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z" />
-                                </svg>
-                                <span class="inline-block ml-1">Sign Up</span>
-                            </button>
+                            <router-link :to="{name:'signup'}">
+                                <button
+                                    class="transition duration-200 mx-5 px-5 py-4 cursor-pointer font-normal text-sm rounded-lg text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-200 focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 ring-inset">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-4 h-4 inline-block align-text-top">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z" />
+                                    </svg>
+                                    <span class="inline-block ml-1">Sign Up</span>
+                                </button>
+                            </router-link>
                         </div>
                     </div>
                 </div>
@@ -56,16 +59,13 @@
                         cyDocsAlert(response.data.original.success ? 'success' : 'error',response.data.original.message);
 
                         if (response.data.original.success){
-                            //this.$store.dispatch('auth/login',response.data);
-                            // this.$router.push('/home');
+                            this.$store.dispatch('auth/login',response.data.original);
+                            this.$router.push('/dashboard');
                         }
 
                     })
                     .catch(error => {
-                        // let errors = error.response.original.errors;
-                        // for (const error of errors){
-                        //     cyDocsAlert('error',error.msg);
-                        // }
+                        console.log(error);
                     });
             },
         },
