@@ -11,10 +11,12 @@ class DocumentRequest extends FormRequest
         return [
             'document_title' => ['required', 'string', 'max:55'],
             'category_id' => ['required'],
+            'role_id' => ['required'],
+            'created_by' => ['required'],
             'department_id' => ['required'],
-            'document_file_path' => ['required',
-//                'mimes:pdf,csv,doc,docx,ppt',
-//                'max:2048'
+            'doc_file' => ['required',
+                'mimes:pdf,csv,doc,docx,ppt',
+                'max:2048'
             ],
         ];
     }
@@ -24,10 +26,12 @@ class DocumentRequest extends FormRequest
         return [
             'document_name.required' => 'Document name required!',
             'category_id.required' => 'Category name required!',
+            'role_id.required' => 'Access level required!',
             'department_id.required' => 'Document department required!',
+            'created_by.required' => 'Document creator is missing!',
             'document_file_path.required' => 'Document required!',
-//            'document_file_path.mimes' => 'Document can only be in pdf,csv,doc,docx or ppt format.',
-//            'document_file_path.max' => 'File size should not exceed 2MB',
+            'document_file_path.mimes' => 'Document can only be in pdf,csv,doc,docx or ppt format.',
+            'document_file_path.max' => 'File size should not exceed 2MB',
         ];
     }
 }

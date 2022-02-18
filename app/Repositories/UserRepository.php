@@ -78,7 +78,7 @@ class UserRepository implements UserRepositoryInterface
 
     public function allUserRoles()
     {
-        return Role::with('department')->get();
+        return Role::all();
     }
 
     public function createUserRole(RoleRequest $request)

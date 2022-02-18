@@ -45,13 +45,13 @@
                                 <p class="text-3xl font-bold leading-7 text-center">User Info</p>
                                 <form @submit.prevent="editUser(editedUser)">
                                     <div class="md:flex mt-8">
-                                        <div class="w-full flex flex-col">
+                                        <div class="w-full flex flex-col text-left">
                                             <label class="font-semibold leading-none">Name</label>
                                             <input v-model="editedUser.name" type="text" class="leading-none text-gray-900 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-400 border rounded border-gray-200" />
                                         </div>
                                     </div>
                                     <div class="md:flex mt-8">
-                                        <div class="w-full flex flex-col">
+                                        <div class="w-full flex flex-col text-left">
                                             <label class="font-semibold leading-none">Department</label>
                                             <select v-model="editedUser.department_id" class="leading-none text-gray-900 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-400 border rounded border-gray-200">
                                                 <option
@@ -62,7 +62,7 @@
                                         </div>
                                     </div>
                                     <div class="md:flex mt-8  mb-9">
-                                        <div class="w-full flex flex-col">
+                                        <div class="w-full flex flex-col text-left">
                                             <label class="font-semibold leading-none">Role</label>
                                             <select v-model="editedUser.role_id" class="leading-none text-gray-900 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-400 border rounded border-gray-200">
                                                 <option
@@ -72,7 +72,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="md:flex mt-8 mb-9 w-full text-white">
+                                    <div class="md:flex mt-8 mb-9 w-full text-white justify-center">
                                         <button type="submit" class="mt-9 font-semibold leading-none py-4 px-10 bg-blue-700 rounded hover:bg-blue-600 focus:ring-2 focus:ring-offset-2 focus:ring-blue-700 focus:outline-none">
                                             Update User
                                         </button>

@@ -15,7 +15,14 @@ class DocumentRepository implements DocumentRepositoryInterface
 
     public function createDocument(DocumentRequest $request)
     {
-        return Document::create($request->all());
+        $data = $request->validated();
+        $file = $request->file('doc_file');
+        $name = '/assets/files/' . uniqid() . '.' . $file->extension();
+        $file->storePubliclyAs('public', $name);
+        $data['document_file_path'] = $name;
+
+        //dd(json_encode($data));
+        return Document::create($data);
     }
 
     public function showDocument($id)
@@ -40,8 +47,8 @@ class DocumentRepository implements DocumentRepositoryInterface
         $roleId = $request->query('role_id');
 
         return Document::where('department_id', '=', $departmentId)
-            ->where('role_id', '=', $roleId)
-            ->with('department')->with('category')->with('creator')
+            ->where('role_id', '<=', $roleId)
+            ->with('department')->with('category')->with('creator')->with('accessRole')
             ->get();
     }
 }

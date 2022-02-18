@@ -14,6 +14,8 @@ class Document extends Model
         [
             'document_title',
             'category_id',
+            'role_id',
+            'created_by',
             'department_id',
             'document_file_path',
         ];
@@ -31,5 +33,10 @@ class Document extends Model
     public function department()
     {
         return $this->belongsTo(Department::class, 'department_id');
+    }
+
+    public function accessRole()
+    {
+        return $this->belongsTo(Role::class, 'role_id');
     }
 }
