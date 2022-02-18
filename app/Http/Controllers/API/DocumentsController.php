@@ -47,4 +47,11 @@ class DocumentsController extends Controller
         $document = $this->documentRepo->deleteDocument($document);
         return response()->json($document, 200);
     }
+
+    public function fetchUserDocuments(Request $request)
+    {
+        $response = $this->documentRepo->fetchUserDocuments($request);
+
+        return response()->json($response, 201);
+    }
 }

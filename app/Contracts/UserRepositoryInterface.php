@@ -3,6 +3,7 @@
 namespace App\Contracts;
 
 
+use App\Http\Requests\RoleRequest;
 use App\Http\Requests\UserRequest;
 use App\User;
 use Illuminate\Http\Request;
@@ -22,4 +23,8 @@ interface UserRepositoryInterface
     public function updateUser(Request $request, User $user);
 
     public function deleteUser(User $user);
+
+    public function allUserRoles();
+
+    public function createUserRole(RoleRequest $request);
 }

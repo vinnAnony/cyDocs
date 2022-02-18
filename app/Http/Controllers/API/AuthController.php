@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Contracts\DocumentRepositoryInterface;
 use App\Contracts\UserRepositoryInterface;
+use App\Http\Requests\RoleRequest;
 use App\Http\Requests\UserRequest;
 use App\User;
 use Illuminate\Http\Request;
@@ -51,5 +52,15 @@ class AuthController extends Controller
     {
         $response = $this->userRepo->login($request);
         return response()->json($response);
+    }
+    public function fetchUserRoles()
+    {
+        $response = $this->userRepo->allUserRoles();
+        return response()->json($response);
+    }
+    public function addUserRole(RoleRequest $request)
+    {
+        $role = $this->userRepo->createUserRole($request);
+        return response()->json($role, 201);
     }
 }

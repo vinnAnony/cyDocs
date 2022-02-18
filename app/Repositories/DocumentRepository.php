@@ -4,6 +4,7 @@ namespace App\Repositories;
 use App\Contracts\DocumentRepositoryInterface;
 use App\Http\Requests\DocumentRequest;
 use App\Models\Document;
+use Illuminate\Http\Request;
 
 class DocumentRepository implements DocumentRepositoryInterface
 {
@@ -33,4 +34,14 @@ class DocumentRepository implements DocumentRepositoryInterface
         return $document->delete($document);
     }
 
+    public function fetchUserDocuments(Request $request)
+    {
+        $departmentId = $request->query('department_id');
+        $roleId = $request->query('role_id');
+
+        return Document::where('department_id', '=', $departmentId)
+            ->where('role_id', '=', $roleId)
+            ->with('department')->with('category')->with('creator')
+            ->get();
+    }
 }

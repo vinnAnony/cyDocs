@@ -5,6 +5,7 @@ namespace App\Contracts;
 
 use App\Http\Requests\DocumentRequest;
 use App\Models\Document;
+use Illuminate\Http\Request;
 
 interface DocumentRepositoryInterface
 {
@@ -17,4 +18,6 @@ interface DocumentRepositoryInterface
     public function updateDocument(DocumentRequest $request, Document $document);
 
     public function deleteDocument(Document $document);
+
+    public function fetchUserDocuments(Request $request);
 }

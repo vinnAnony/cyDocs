@@ -9,9 +9,9 @@ class Department extends Model
 {
 
     protected $fillable =
-        [
-            'department_name'
-        ];
+    [
+        'department_name'
+    ];
 
     public function categories()
     {

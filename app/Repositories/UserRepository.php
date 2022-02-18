@@ -2,7 +2,9 @@
 namespace App\Repositories;
 
 use App\Contracts\UserRepositoryInterface;
+use App\Http\Requests\RoleRequest;
 use App\Http\Requests\UserRequest;
+use App\Models\Role;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -72,5 +74,15 @@ class UserRepository implements UserRepositoryInterface
     {
         /** @var TYPE_NAME $user */
         return $user->delete($user);
+    }
+
+    public function allUserRoles()
+    {
+        return Role::with('department')->get();
+    }
+
+    public function createUserRole(RoleRequest $request)
+    {
+        return Role::create($request->all());
     }
 }
