@@ -42,4 +42,11 @@ class FileRequestRepository implements FileRequestRepositoryInterface
         /** @var TYPE_NAME $fileRequest */
         return $fileRequest->delete($fileRequest);
     }
+
+    public function fetchDepartmentFileRequests($departmentId)
+    {
+        return FileRequest::where('department_id', $departmentId)
+            ->with('requester')
+            ->with('document')->get();
+    }
 }

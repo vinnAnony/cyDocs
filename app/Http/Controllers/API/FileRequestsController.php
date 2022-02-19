@@ -57,4 +57,11 @@ class FileRequestsController extends Controller
 
         return response()->json($response, 201);
     }
+
+    public function fetchDepartmentFileRequests($departmentId)
+    {
+        $response = $this->fileRequestRepo->fetchDepartmentFileRequests($departmentId);
+
+        return response()->json($response, 201);
+    }
 }

@@ -14,6 +14,8 @@ interface FileRequestRepositoryInterface
 
     public function fetchUserFileRequests($userId);
 
+    public function fetchDepartmentFileRequests($departmentId);
+
     public function createFileRequest(FileRequestRequest $request);
 
     public function updateFileRequest(FileRequestRequest $request, FileRequest $fileRequest);

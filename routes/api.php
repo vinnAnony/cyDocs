@@ -55,4 +55,6 @@ Route::middleware('auth:api')->group(function () {
     Route::delete('/file-requests', 'API\FileRequestsController@destroy');
 
     Route::get('/user-file-requests/{userId}', 'API\FileRequestsController@fetchUserFileRequests');
+
+    Route::get('/department-file-requests/{departmentId}', 'API\FileRequestsController@fetchDepartmentFileRequests');
 });
