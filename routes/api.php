@@ -31,6 +31,7 @@ Route::middleware('auth:api')->group(function () {
     Route::delete('/documents', 'API\DocumentsController@destroy');
 
     Route::get('/user-documents', 'API\DocumentsController@fetchUserDocuments');
+    Route::get('/department-category-documents', 'API\DocumentsController@fetchDepartmentCategoryDocuments');
 
     Route::get('/categories', 'API\CategoriesController@index');
     Route::post('/categories', 'API\CategoriesController@store');
@@ -46,4 +47,12 @@ Route::middleware('auth:api')->group(function () {
     Route::put('/departments/{department}', 'API\DepartmentsController@update');
     Route::delete('/departments', 'API\DepartmentsController@destroy');
     Route::get('/department-documents/{departmentId}', 'API\DepartmentsController@fetchDepartmentDocuments');
+
+    Route::get('/file-requests', 'API\FileRequestsController@index');
+    Route::post('/file-requests', 'API\FileRequestsController@store');
+    Route::get('/file-request/{fileRequestId}', 'API\FileRequestsController@show');
+    Route::put('/file-requests/{fileRequest}', 'API\FileRequestsController@update');
+    Route::delete('/file-requests', 'API\FileRequestsController@destroy');
+
+    Route::get('/user-file-requests/{userId}', 'API\FileRequestsController@fetchUserFileRequests');
 });

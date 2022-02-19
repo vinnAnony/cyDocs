@@ -51,4 +51,14 @@ class DocumentRepository implements DocumentRepositoryInterface
             ->with('department')->with('category')->with('creator')->with('accessRole')
             ->get();
     }
+
+    public function fetchDepartmentCategoryDocuments(Request $request)
+    {
+        $departmentId = $request->query('department_id');
+        $categoryId = $request->query('category_id');
+
+        return Document::where('department_id', '=', $departmentId)
+            ->where('category_id', '=', $categoryId)
+            ->get();
+    }
 }

@@ -10,3 +10,8 @@
 @import "tailwindcss/components";
 
 @import "tailwindcss/utilities";
+
+
+.v-application--wrap {
+    min-height: fit-content !important;
+}

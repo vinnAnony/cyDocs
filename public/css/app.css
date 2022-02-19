@@ -21638,6 +21638,12 @@ video {
           animation: bounce 1s infinite;
 }
 
+.v-application--wrap {
+  min-height: -webkit-fit-content !important;
+  min-height: -moz-fit-content !important;
+  min-height: fit-content !important;
+}
+
 @media (min-width: 640px){
   .sm\:container{
     width: 100%;

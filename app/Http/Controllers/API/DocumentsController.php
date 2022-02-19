@@ -57,4 +57,11 @@ class DocumentsController extends Controller
 
         return response()->json($response, 201);
     }
+
+    public function fetchDepartmentCategoryDocuments(Request $request)
+    {
+        $response = $this->documentRepo->fetchDepartmentCategoryDocuments($request);
+
+        return response()->json($response, 201);
+    }
 }

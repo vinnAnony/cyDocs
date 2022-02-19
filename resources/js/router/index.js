@@ -11,6 +11,7 @@ import FileManager from "../components/pages/FileManager";
 import FileRequests from "../components/pages/FileRequests";
 import Users from "../components/pages/Users";
 import Configuration from "../components/pages/Configuration";
+import NewFileRequest from "../components/pages/NewFileRequest";
 
 
 const routes = [
@@ -49,7 +50,7 @@ const routes = [
     {
         path: '/my-documents',
         name: 'my-documents',
-        component: Vue.component("dashboard-component",MyDocuments),
+        component: Vue.component("my-documents-component",MyDocuments),
         meta: {
             requiresAuth: true
         }
@@ -57,7 +58,7 @@ const routes = [
     {
         path: '/file-manager',
         name: 'file-manager',
-        component: Vue.component("dashboard-component",FileManager),
+        component: Vue.component("file-manager-component",FileManager),
         meta: {
             requiresAuth: true
         }
@@ -65,7 +66,15 @@ const routes = [
     {
         path: '/file-requests',
         name: 'file-requests',
-        component: Vue.component("dashboard-component",FileRequests),
+        component: Vue.component("file-requests-component",FileRequests),
+        meta: {
+            requiresAuth: true
+        }
+    },
+    {
+        path: '/file-requests/create',
+        name: 'new-file-request',
+        component: Vue.component("new-file-request-component",NewFileRequest),
         meta: {
             requiresAuth: true
         }
@@ -73,7 +82,7 @@ const routes = [
     {
         path: '/users',
         name: 'users',
-        component: Vue.component("dashboard-component",Users),
+        component: Vue.component("users-component",Users),
         meta: {
             requiresAuth: true
         }
@@ -81,7 +90,7 @@ const routes = [
     {
         path: '/configuration',
         name: 'configuration',
-        component: Vue.component("dashboard-component",Configuration),
+        component: Vue.component("configuration-component",Configuration),
         meta: {
             requiresAuth: true
         }

@@ -29,7 +29,8 @@
                     :loading="isTableLoading"
                     loading-text="Loading documents... Please wait">
                     <template v-slot:item.actions="{ item }">
-                        <font-awesome-icon icon="edit" @click="showModal(item)" class="cursor-pointer text-blue-700"/>
+                        <font-awesome-icon icon="eye" class="cursor-pointer text-blue-700"/>
+                        <font-awesome-icon icon="download" class="cursor-pointer text-green-700"/>
                         <font-awesome-icon icon="trash" @click="deleteDocument(item)" class="cursor-pointer text-red-700"/>
                     </template>
                     <template v-if="!isTableLoading && documents.length===0" v-slot:no-data>
@@ -45,15 +46,18 @@
                     <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
                         <div class="rounded-t mb-0 px-4 py-3 border-0">
                             <div class="flex flex-col">
-                                <v-alert
-                                    v-if="isError"
-                                    color="red"
-                                    dense
-                                    dismissible
-                                    outlined
-                                    prominent>
-                                    There are issues with your inputs
-                                </v-alert>
+                                <v-app class="ma-0 pa-0">
+                                    <v-alert
+                                        v-if="isError"
+                                        color="red"
+                                        dense
+                                        dismissible
+                                        outlined
+                                        prominent>
+                                        There are issues with your inputs
+                                    </v-alert>
+                                </v-app>
+
                                 <p class="text-3xl font-bold leading-7 text-center">Document Upload</p>
                                 <form @submit.prevent="isEdit ? editDocument(editedDocument) : uploadDocument(editedDocument)">
                                     <div class="md:flex mt-8">
@@ -86,7 +90,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="md:flex mt-8 mb-9 w-full text-white justify-center">
+                                    <div class="flex mt-8 mb-9 w-full text-white justify-center">
                                         <button type="submit" class="mt-9 font-semibold leading-none py-4 px-10 bg-blue-700 rounded hover:bg-blue-600 focus:ring-2 focus:ring-offset-2 focus:ring-blue-700 focus:outline-none">
                                             {{isEdit ? 'Edit' : 'Upload' }} Document
                                         </button>

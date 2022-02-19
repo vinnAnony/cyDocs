@@ -14,7 +14,7 @@
                 CyDocs
             </a>
 
-            <ul class="md:hidden items-center flex flex-wrap list-none">
+            <ul class="ml-10 md:hidden items-center flex flex-wrap list-none">
                 <li class="inline-block relative">
                     {{user.name}}
                 </li>

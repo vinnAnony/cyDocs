@@ -20,4 +20,6 @@ interface DocumentRepositoryInterface
     public function deleteDocument(Document $document);
 
     public function fetchUserDocuments(Request $request);
+
+    public function fetchDepartmentCategoryDocuments(Request $request);
 }

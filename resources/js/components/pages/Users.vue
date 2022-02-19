@@ -72,7 +72,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="md:flex mt-8 mb-9 w-full text-white justify-center">
+                                    <div class="flex mt-8 mb-9 w-full text-white justify-center">
                                         <button type="submit" class="mt-9 font-semibold leading-none py-4 px-10 bg-blue-700 rounded hover:bg-blue-600 focus:ring-2 focus:ring-offset-2 focus:ring-blue-700 focus:outline-none">
                                             Update User
                                         </button>
