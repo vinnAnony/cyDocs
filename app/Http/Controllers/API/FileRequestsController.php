@@ -51,9 +51,9 @@ class FileRequestsController extends Controller
         return response()->json($fileRequest, 200);
     }
 
-    public function fetchUserFileRequests(Request $request)
+    public function fetchUserFileRequests($userId)
     {
-        $response = $this->fileRequestRepo->fetchUserFileRequests($request);
+        $response = $this->fileRequestRepo->fetchUserFileRequests($userId);
 
         return response()->json($response, 201);
     }

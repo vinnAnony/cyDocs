@@ -21,7 +21,10 @@ class FileRequestRepository implements FileRequestRepositoryInterface
 
     public function fetchUserFileRequests($userId)
     {
-        return FileRequest::where('requester_id', '=', $userId)->first();
+        return FileRequest::where('requester_id', $userId)
+            ->with('category')
+            ->with('department')
+            ->with('document')->get();
     }
 
     public function createFileRequest(FileRequestRequest $request)

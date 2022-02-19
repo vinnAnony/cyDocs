@@ -33,4 +33,14 @@ class FileRequest extends Model
     {
         return $this->belongsTo(Document::class, 'document_id');
     }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id');
+    }
+
+    public function department()
+    {
+        return $this->belongsTo(Department::class, 'department_id');
+    }
 }

@@ -57,15 +57,28 @@
                     {
                         text: 'File Name',
                         align: 'start',
-                        value: 'document_title',
+                        value: 'document.document_title',
                     },
                     { text: 'Category', value: 'category.category_name' },
                     { text: 'Department', value: 'department.department_name'},
-                    { text: 'Expiry', value: 'department.department_name'},
+                    { text: 'Status', value: 'status'},
+                    { text: 'Expiry', value: 'expires_at'},
                     { text: 'Actions', value: 'actions', sortable: false },
-                ]
+                ],
+                statuses:{
+                    1 : 'Pending',
+                    2 : 'Approved',
+                    3 : 'Rejected',
+                }
             }
-        }
+        },
+        beforeMount() {
+            url.get("user-file-requests/"+this.$store.getters['auth/user'].id,)
+                .then((response) => {
+                    this.isTableLoading = false;
+                    this.fileRequests = response.data;
+                });
+        },
     }
 </script>
 
