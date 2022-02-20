@@ -19,7 +19,6 @@ export const auth = {
     actions: {
         login({commit},data) {
             //localStorage.setItem('user', JSON.stringify(user));
-            console.log(data)
             if (data.token) {
                 localStorage.setItem('cyDocsToken', JSON.stringify(data.token));
                 localStorage.setItem('user', JSON.stringify(data.user));

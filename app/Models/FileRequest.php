@@ -5,10 +5,11 @@ namespace App\Models;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Notifications\Notifiable;
 
 class FileRequest extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, Notifiable;
 
     protected $fillable =
         [

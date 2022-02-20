@@ -63,6 +63,16 @@
                                     <div class="md:flex mt-8">
                                         <div class="w-full flex flex-col text-left">
                                             <label class="font-semibold leading-none">Name</label>
+                                            <input
+                                                type="text"
+                                                v-model="docName"
+                                                required
+                                                class="leading-none text-gray-900 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-400 border rounded border-gray-200" />
+                                        </div>
+                                    </div>
+                                    <div class="md:flex mt-8">
+                                        <div class="w-full flex flex-col text-left">
+                                            <label class="font-semibold leading-none">Name</label>
                                             <input type="file"
                                                    ref="file" @change="handleFileObject()"
                                                    class="leading-none text-gray-900 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-400 border rounded border-gray-200" />

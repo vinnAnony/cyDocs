@@ -13,7 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        'App\Console\Commands\TwelveHourNotification',
     ];
 
     /**
@@ -25,7 +25,15 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')
-        //          ->hourly();
+        //          ->hourly();art
+        $schedule->command('emails:twelvehoursupdate')
+            ->timezone('Africa/Nairobi')
+            ->everyMinute()
+            ->runInBackground();
+        $schedule->command('emails:sixhoursupdate')
+            ->timezone('Africa/Nairobi')
+            ->everyMinute()
+            ->runInBackground();
     }
 
     /**

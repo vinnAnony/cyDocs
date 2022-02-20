@@ -3,7 +3,7 @@ const url = axios.create({
     baseURL: 'http://cyDocs.appp/api/',
     headers: {
         'Accept': 'application/json',
-        'Authorization': `Bearer ${localStorage.getItem('user') != null ? JSON.parse(localStorage.getItem('cyDocsToken')) : null}`
+        'Authorization': `Bearer ${JSON.parse(localStorage.getItem('cyDocsToken'))}`
     }
 })
 export default url;
