@@ -16,7 +16,10 @@ class FileRequestRepository implements FileRequestRepositoryInterface
 
     public function showFileRequest($id)
     {
-        return FileRequest::where('id', '=', $id)->first();
+        return FileRequest::where('id', '=', $id)
+            ->with('requester')
+            ->with('document')
+            ->first();
     }
 
     public function fetchUserFileRequests($userId)
@@ -32,8 +35,9 @@ class FileRequestRepository implements FileRequestRepositoryInterface
         return FileRequest::create($request->all());
     }
 
-    public function updateFileRequest(FileRequestRequest $request, FileRequest $fileRequest)
+    public function updateFileRequest(Request $request, FileRequest $fileRequest)
     {
+        $request['expires_at'] = date('Y-m-d H:i:s', strtotime($request['expires_at']));
         return $fileRequest->update($request->all());
     }
 

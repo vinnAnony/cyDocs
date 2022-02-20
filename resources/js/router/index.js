@@ -13,6 +13,7 @@ import Users from "../components/pages/Users";
 import Configuration from "../components/pages/Configuration";
 import NewFileRequest from "../components/pages/NewFileRequest";
 import IncomingFileRequests from "../components/pages/IncomingFileRequests";
+import ViewIncomingFileRequest from "../components/pages/ViewIncomingFileRequest";
 
 
 const routes = [
@@ -76,6 +77,14 @@ const routes = [
         path: '/incoming-file-requests',
         name: 'incoming-file-requests',
         component: Vue.component("incoming-file-requests-component",IncomingFileRequests),
+        meta: {
+            requiresAuth: true
+        }
+    },
+    {
+        path: '/incoming-file-request/:id',
+        name: 'view-incoming-file-request',
+        component: Vue.component("view-incoming-file-requests-component",ViewIncomingFileRequest),
         meta: {
             requiresAuth: true
         }

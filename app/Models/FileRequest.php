@@ -17,6 +17,11 @@ class FileRequest extends Model
             'category_id',
             'requester_id',
             'requester_message',
+
+            'status',
+            'approver_id',
+            'approver_message',
+            'expires_at',
         ];
 
     public function requester()

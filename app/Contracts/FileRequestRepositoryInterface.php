@@ -5,6 +5,7 @@ namespace App\Contracts;
 
 use App\Http\Requests\FileRequestRequest;
 use App\Models\FileRequest;
+use Illuminate\Http\Request;
 
 interface FileRequestRepositoryInterface
 {
@@ -18,7 +19,7 @@ interface FileRequestRepositoryInterface
 
     public function createFileRequest(FileRequestRequest $request);
 
-    public function updateFileRequest(FileRequestRequest $request, FileRequest $fileRequest);
+    public function updateFileRequest(Request $request, FileRequest $fileRequest);
 
     public function deleteFileRequest(FileRequest $fileRequest);
 }

@@ -15,3 +15,9 @@ Vue.use(VueSweetalert2);
 //sweet-modal
 import SweetModal from 'sweet-modal-vue/src/plugin.js'
 Vue.use(SweetModal)
+
+//Date-time picker
+import { Datetime } from 'vue-datetime'
+import 'vue-datetime/dist/vue-datetime.css'
+
+Vue.use(Datetime)

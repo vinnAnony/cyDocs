@@ -18,7 +18,9 @@
                     :loading="isTableLoading"
                     loading-text="Loading file requests... Please wait">
                     <template v-slot:item.actions="{ item }">
-                        <font-awesome-icon icon="eye" class="cursor-pointer text-blue-700"/>
+                        <router-link :to="{name:'view-incoming-file-request',params:{id: item.id}}">
+                            <font-awesome-icon icon="eye" class="cursor-pointer text-blue-700"/>
+                        </router-link>
                     </template>
                     <template v-if="!isTableLoading && incomingFileRequests.length===0" v-slot:no-data>
                         Oops! No incoming file requests found.

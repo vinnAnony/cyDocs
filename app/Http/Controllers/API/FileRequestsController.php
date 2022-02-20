@@ -39,10 +39,21 @@ class FileRequestsController extends Controller
         return response()->json($fileRequest, 200);
     }
 
-    public function update(FileRequestRequest $request, FileRequest $fileRequest)
+    public function update(Request $request, FileRequest $fileRequest)
     {
         $this->fileRequestRepo->updateFileRequest($request, $fileRequest);
-        return response()->json($fileRequest, 200);
+        if ($request->status == 2){
+            return response()->json([
+                'success' =>true,
+                'message' => 'File request approved.'
+            ], 200);
+        }elseif ($request->status == 3){
+            return response()->json([
+                'success' =>true,
+                'message' => 'File request rejected.'
+            ], 200);
+        }
+
     }
 
     public function destroy(FileRequest $fileRequest)
