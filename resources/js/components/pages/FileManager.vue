@@ -33,7 +33,9 @@
                     <template v-slot:item.actions="{ item }">
                         <font-awesome-icon icon="eye" class="cursor-pointer text-blue-700"/>
                         <font-awesome-icon icon="download" class="cursor-pointer text-green-700" @click="downloadDocument(item)"/>
-                        <font-awesome-icon icon="trash" @click="deleteDocument(item)" class="cursor-pointer text-red-700"/>
+                        <font-awesome-icon icon="trash" @click="deleteDocument(item)"
+                                           v-if="userRoleId>=3"
+                                           class="cursor-pointer text-red-700"/>
                     </template>
                     <template v-if="!isTableLoading && documents.length===0" v-slot:no-data>
                         Oops! No documents for you.
@@ -56,6 +58,7 @@
         name: "FileManager",
         data(){
             return{
+                userRoleId: null,
                 isTableLoading:true,
                 searchKeyword:'',
                 documents:[],
@@ -75,6 +78,7 @@
             }
         },
         beforeMount(){
+            this.userRoleId = this.$store.getters['auth/user'].role_id;
             this.loadUserDocuments();
         },
         methods: {

@@ -50,12 +50,6 @@
                         </router-link>
                     </li>
                     <li class="items-center">
-                        <router-link :to="{name:'my-documents'}" class="px-2 text-blueGray-700 hover:text-purple-500 text-xs uppercase py-3 font-bold block">
-                            <font-awesome-icon icon="folder" class="opacity-75 mr-2 text-sm"/>
-                            My Documents
-                        </router-link>
-                    </li>
-                    <li class="items-center">
                         <router-link :to="{name:'file-manager'}" class="px-2 text-blueGray-700 hover:text-purple-500 text-xs uppercase py-3 font-bold block">
                             <font-awesome-icon icon="archive" class="opacity-75 mr-2 text-sm"/>
                             File Management
@@ -67,7 +61,7 @@
                             My File Requests
                         </router-link>
                     </li>
-                    <li class="items-center">
+                    <li class="items-center" v-if="this.$store.getters['auth/user'].role_id>2">
                         <router-link :to="{name:'incoming-file-requests'}" class="px-2 text-blueGray-700 hover:text-purple-500 text-xs uppercase py-3 font-bold block">
                             <font-awesome-icon icon="inbox" class="opacity-75 mr-2 text-sm"/>
                             Incoming Requests
@@ -81,7 +75,7 @@
                     System
                 </h6>
 
-                <ul class="md:flex-col md:min-w-full flex flex-col list-none">
+                <ul class="md:flex-col md:min-w-full flex flex-col list-none" v-if="this.$store.getters['auth/user'].role_id>=3">
                     <li class="items-center">
                         <router-link :to="{name:'users'}" class="px-2 text-blueGray-700 hover:text-purple-500 outline outline-offset-2 outline-blue-500 text-xs uppercase py-3 font-bold block">
                             <font-awesome-icon icon="users-cog" class="opacity-75 mr-2 text-sm"/>

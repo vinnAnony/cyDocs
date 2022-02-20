@@ -16,7 +16,7 @@
         <div data-app>
             <v-card>
                 <v-card-title>
-                    File Requests
+                    My File Requests
                     <v-spacer/>
                     <v-text-field
                         v-model="searchKeyword"
@@ -32,7 +32,6 @@
                     loading-text="Loading file requests... Please wait">
                     <template v-slot:item.actions="{ item }">
                         <font-awesome-icon icon="eye" class="cursor-pointer text-blue-700"/>
-                        <font-awesome-icon icon="download" class="cursor-pointer text-green-700"/>
                     </template>
                     <template v-if="!isTableLoading && fileRequests.length===0" v-slot:no-data>
                         Oops! No file requests for you.

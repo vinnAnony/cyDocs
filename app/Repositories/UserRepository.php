@@ -7,6 +7,7 @@ use App\Http\Requests\UserRequest;
 use App\Models\Role;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserRepository implements UserRepositoryInterface
 {
@@ -34,7 +35,7 @@ class UserRepository implements UserRepositoryInterface
             'email' => $request->email,
             'password' => bcrypt($request->password)
         ]);
-        $userData = User::latest()->first();
+        $userData = User::latest()->with('role')->with('department')->first();
 
         $token = $user->createToken('CyDocsToken')->accessToken;
         return response()->json([
@@ -52,11 +53,12 @@ class UserRepository implements UserRepositoryInterface
             'password' => $request->password
         ];
         if (auth()->attempt($data)) {
+            $user = User::find(Auth::id())->with('role')->with('department')->first();
             $token = auth()->user()->createToken('CyDocsToken')->accessToken;
             return response()->json([
                 'success' => true,
                 'message' => 'Successful login',
-                'user' => auth()->user(),
+                'user' => $user,
                 'token' => $token,
             ],200);
         } else {

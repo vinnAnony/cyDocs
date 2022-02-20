@@ -15,6 +15,9 @@ import Configuration from "../components/pages/Configuration";
 import NewFileRequest from "../components/pages/NewFileRequest";
 import IncomingFileRequests from "../components/pages/IncomingFileRequests";
 import ViewIncomingFileRequest from "../components/pages/ViewIncomingFileRequest";
+import UserRoles from "../components/pages/config/UserRoles";
+import Departments from "../components/pages/config/Departments";
+import Categories from "../components/pages/config/Categories";
 
 
 const routes = [
@@ -118,6 +121,27 @@ const routes = [
         path: '/configuration',
         name: 'configuration',
         component: Vue.component("configuration-component",Configuration),
+        meta: {
+            requiresAuth: true
+        }
+    },{
+        path: '/user-roles',
+        name: 'user-roles',
+        component: Vue.component("user-roles-component",UserRoles),
+        meta: {
+            requiresAuth: true
+        }
+    },{
+        path: '/departments',
+        name: 'departments',
+        component: Vue.component("departments-component",Departments),
+        meta: {
+            requiresAuth: true
+        }
+    },{
+        path: '/categories',
+        name: 'categories',
+        component: Vue.component("categories-component",Categories),
         meta: {
             requiresAuth: true
         }
