@@ -31,7 +31,7 @@
                     :loading="isTableLoading"
                     loading-text="Loading file requests... Please wait">
                     <template v-slot:item.actions="{ item }">
-                        <font-awesome-icon icon="eye" class="cursor-pointer text-blue-700"/>
+                        <font-awesome-icon v-if="item.status==2" icon="eye" class="cursor-pointer text-blue-700"/>
                     </template>
                     <template v-if="!isTableLoading && fileRequests.length===0" v-slot:no-data>
                         Oops! No file requests for you.

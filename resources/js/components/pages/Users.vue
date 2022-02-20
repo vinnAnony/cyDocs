@@ -1,15 +1,5 @@
 <template>
     <div>
-<!--        <div>-->
-<!--            <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">-->
-<!--                <button-->
-<!--                    class="bg-green-500 text-white active:bg-green-600 text-xs font-bold px-6 py-2 my-3 rounded outline-none focus:outline-none mr-1 mb-1"-->
-<!--                    type="button"-->
-<!--                    style="transition:all .15s ease">-->
-<!--                    <font-awesome-icon icon="plus" class="text-white md"/>-->
-<!--                </button>-->
-<!--            </div>-->
-<!--        </div>-->
         <div data-app>
             <v-card>
                 <v-card-title>

@@ -12,7 +12,7 @@ class CategoryRepository implements CategoryRepositoryInterface
 
     public function allCategories()
     {
-        return Category::all();
+        return Category::with('department')->get();
     }
 
     public function showCategory($id)
