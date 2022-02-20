@@ -4,6 +4,7 @@ namespace App;
 
 use App\Models\Department;
 use App\Models\Document;
+use App\Models\Role;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -49,5 +50,10 @@ class User extends Authenticatable
     public function documents()
     {
         return $this->hasMany(Document::class)->latest();
+    }
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class,'role_id');
     }
 }

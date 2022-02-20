@@ -12,6 +12,7 @@ class FileRequestRequest extends FormRequest
             'department_id' => ['required'],
             'category_id' => ['required'],
             'document_id' => ['required'],
+            'requester_id' => ['sometimes'],
             'requester_message' => ['required'],
         ];
     }

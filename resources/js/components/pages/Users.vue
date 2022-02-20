@@ -97,20 +97,7 @@
         data(){
             return{
                 departments:[],
-                roles:[
-                    {
-                        id:1,
-                        role_name:'Staff'
-                    },
-                    {
-                        id:2,
-                        role_name:'Supervisor'
-                    },
-                    {
-                        id:3,
-                        role_name:'Manager'
-                    }
-                ],
+                roles:[],
                 searchKeyword:'',
                 editedIndex: -1,
                 editedUser:{},
@@ -123,7 +110,7 @@
                     },
                     { text: 'Email', value: 'email', sortable: false,},
                     { text: 'Department', value: 'department.department_name' },
-                    { text: 'Role', value: 'role_id' },
+                    { text: 'Role', value: 'role.role_name' },
                     { text: 'Actions', value: 'actions', sortable: false },
                 ]
             }
@@ -134,6 +121,12 @@
                 .then((response)=>
                 {
                     this.departments = response.data;
+                });
+
+            url.get("user-roles/",)
+                .then((response)=>
+                {
+                    this.roles = response.data;
                 });
         },
         methods: {
