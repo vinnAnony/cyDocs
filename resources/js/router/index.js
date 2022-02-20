@@ -8,6 +8,7 @@ import Welcome from "../components/pages/Welcome";
 import Dashboard from "../components/pages/Dashboard";
 import MyDocuments from "../components/pages/MyDocuments";
 import FileManager from "../components/pages/FileManager";
+import NewFileUpload from "../components/pages/NewFileUpload";
 import FileRequests from "../components/pages/FileRequests";
 import Users from "../components/pages/Users";
 import Configuration from "../components/pages/Configuration";
@@ -61,6 +62,14 @@ const routes = [
         path: '/file-manager',
         name: 'file-manager',
         component: Vue.component("file-manager-component",FileManager),
+        meta: {
+            requiresAuth: true
+        }
+    },
+    {
+        path: '/file-manager/new',
+        name: 'new-file-upload',
+        component: Vue.component("new-file-upload-component",NewFileUpload),
         meta: {
             requiresAuth: true
         }

@@ -70,10 +70,10 @@ class UserRepository implements UserRepositoryInterface
         return $user->update($request->all());
     }
 
-    public function deleteUser(User $user)
+    public function deleteUser($userId)
     {
-        /** @var TYPE_NAME $user */
-        return $user->delete($user);
+        $user=User::where('id',$userId)->delete();
+        return ($user);
     }
 
     public function allUserRoles()

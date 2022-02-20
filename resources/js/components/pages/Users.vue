@@ -129,11 +129,7 @@
             }
         },
         beforeMount(){
-            url.get("users/",)
-                .then((response)=>
-                {
-                    this.users = response.data;
-                });
+            this.loadUsers();
             url.get("departments/",)
                 .then((response)=>
                 {
@@ -141,6 +137,13 @@
                 });
         },
         methods: {
+            loadUsers(){
+                url.get("users/",)
+                    .then((response)=>
+                    {
+                        this.users = response.data;
+                    });
+            },
             showModal(user){
                 this.editedUser=user;
                 this.$refs.userModal.open();
@@ -155,6 +158,7 @@
                     .then(response => {
                         if (response.data.success)
                         {
+                            this.loadUsers();
                             cyDocsAlert('success',response.data.message);
                             this.closeModal();
                             this.editedIndex = this.users.indexOf(user);
@@ -172,7 +176,37 @@
             deleteUser (user) {
                 this.editedIndex = this.users.indexOf(user);
                 this.editedUser = Object.assign({}, user);
-                //
+                Vue.swal({
+                    text: `Are you sure you want to remove ${user.name}?`,
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#57d675',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        url.delete(
+                            "users/" + user.id
+                        ).then(response => {
+                            if (response.data.success)
+                            {
+                                this.loadUsers();
+                                cyDocsAlert('success','Deleted successfully.');
+                            }
+                        })
+                            .catch(error => {
+                                let errors = error.response.data.errors;
+                                Object.entries(errors).map(error => {
+                                    error[1].forEach(err => {
+                                        this.isError = true;
+                                        this.responseErrors.push(err);
+                                        cyDocsAlert('error',err);
+                                    })
+                                });
+                            });
+                    }
+                });
+
             },
 
         },

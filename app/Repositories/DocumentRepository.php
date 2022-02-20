@@ -5,6 +5,7 @@ use App\Contracts\DocumentRepositoryInterface;
 use App\Http\Requests\DocumentRequest;
 use App\Models\Document;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class DocumentRepository implements DocumentRepositoryInterface
 {
@@ -17,7 +18,7 @@ class DocumentRepository implements DocumentRepositoryInterface
     {
         $data = $request->validated();
         $file = $request->file('doc_file');
-        $name = '/assets/files/' . uniqid() . '.' . $file->extension();
+        $name = 'assets/files/' . uniqid() . '.' . $file->extension();
         $file->storePubliclyAs('public', $name);
         $data['document_file_path'] = $name;
 
@@ -35,10 +36,11 @@ class DocumentRepository implements DocumentRepositoryInterface
         return $document->update($request->all());
     }
 
-    public function deleteDocument(Document $document)
+    public function deleteDocument($documentId)
     {
-        /** @var TYPE_NAME $document */
-        return $document->delete($document);
+        $document=Document::where('id',$documentId)->delete();
+        Document::withTrashed()->find($documentId)->update(['deleted_by' => auth()->user()->id]);
+        return ($document);
     }
 
     public function fetchUserDocuments(Request $request)
@@ -60,5 +62,15 @@ class DocumentRepository implements DocumentRepositoryInterface
         return Document::where('department_id', '=', $departmentId)
             ->where('category_id', '=', $categoryId)
             ->get();
+    }
+
+
+    public function downloadDocument($documentId)
+    {
+        $document = Document::where('id', $documentId)
+            ->first();
+        $document_file_path = $document->document_file_path;
+        //dd(storage_path('app/public/'.$document_file_path));
+        return response()->download(storage_path('app/public/'.$document_file_path));
     }
 }

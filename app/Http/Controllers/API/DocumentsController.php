@@ -45,10 +45,20 @@ class DocumentsController extends Controller
         return response()->json($document, 200);
     }
 
-    public function destroy(Document $document)
+    public function destroy($documentId)
     {
-        $document = $this->documentRepo->deleteDocument($document);
-        return response()->json($document, 200);
+        $response = $this->documentRepo->deleteDocument($documentId);
+        if ($response){
+            return response()->json([
+                'success' => true,
+                'message' => 'Deleted successfully'
+            ], 200);
+        }else{
+            return response()->json([
+                'success' => false,
+                'message' => 'An error occurred. Please try again.'
+            ], 200);
+        }
     }
 
     public function fetchUserDocuments(Request $request)
@@ -61,7 +71,11 @@ class DocumentsController extends Controller
     public function fetchDepartmentCategoryDocuments(Request $request)
     {
         $response = $this->documentRepo->fetchDepartmentCategoryDocuments($request);
+    }
 
+    public function downloadDocument($documentId)
+    {
+        $response = $this->documentRepo->downloadDocument($documentId);
         return response()->json($response, 201);
     }
 }

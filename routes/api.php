@@ -20,6 +20,7 @@ Route::post('login', 'API\AuthController@login');
 Route::middleware('auth:api')->group(function () {
     Route::get('/users', 'API\AuthController@fetchAllUsers');
     Route::put('/users/{user}', 'API\AuthController@updateUser');
+    Route::delete('/users/{userId}', 'API\AuthController@destroy');
 
     Route::get('/user-roles', 'API\AuthController@fetchUserRoles');
     Route::post('/user-roles', 'API\AuthController@addUserRole');
@@ -28,7 +29,8 @@ Route::middleware('auth:api')->group(function () {
     Route::post('/documents', 'API\DocumentsController@store');
     Route::get('/document/{docId}', 'API\DocumentsController@show');
     Route::put('/documents/{document}', 'API\DocumentsController@update');
-    Route::delete('/documents', 'API\DocumentsController@destroy');
+    Route::delete('/document/{documentId}', 'API\DocumentsController@destroy');
+    Route::get('/download-document/{documentId}', 'API\DocumentsController@downloadDocument');
 
     Route::get('/user-documents', 'API\DocumentsController@fetchUserDocuments');
     Route::get('/department-category-documents', 'API\DocumentsController@fetchDepartmentCategoryDocuments');

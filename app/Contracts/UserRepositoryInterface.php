@@ -22,7 +22,7 @@ interface UserRepositoryInterface
 
     public function updateUser(Request $request, User $user);
 
-    public function deleteUser(User $user);
+    public function deleteUser($userId);
 
     public function allUserRoles();
 

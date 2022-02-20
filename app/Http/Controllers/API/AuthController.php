@@ -63,4 +63,20 @@ class AuthController extends Controller
         $role = $this->userRepo->createUserRole($request);
         return response()->json($role, 201);
     }
+
+    public function destroy($userId)
+    {
+        $response = $this->userRepo->deleteUser($userId);
+        if ($response){
+            return response()->json([
+                'success' => true,
+                'message' => 'Deleted successfully'
+            ], 200);
+        }else{
+            return response()->json([
+                'success' => false,
+                'message' => 'An error occurred. Please try again.'
+            ], 200);
+        }
+    }
 }

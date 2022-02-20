@@ -16,6 +16,7 @@ class Document extends Model
             'category_id',
             'role_id',
             'created_by',
+            'deleted_by',
             'department_id',
             'document_file_path',
         ];

@@ -9,7 +9,8 @@ class CategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'category_name' => ['required','unique:categories,category_name,'.$this->get('id')],
+            'category_name' => ['required'],
+            'department_id' => ['required'],
         ];
     }
 
@@ -17,7 +18,7 @@ class CategoryRequest extends FormRequest
     {
         return [
             'category_name.required' => 'Category name required!',
-            'category_name.unique' => 'Category name already exists!',
+            'department_id.required' => 'Department name required!',
         ];
     }
 }

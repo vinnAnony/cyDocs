@@ -17,9 +17,11 @@ interface DocumentRepositoryInterface
 
     public function updateDocument(DocumentRequest $request, Document $document);
 
-    public function deleteDocument(Document $document);
+    public function deleteDocument($documentId);
 
     public function fetchUserDocuments(Request $request);
 
     public function fetchDepartmentCategoryDocuments(Request $request);
+
+    public function downloadDocument($documentId);
 }
