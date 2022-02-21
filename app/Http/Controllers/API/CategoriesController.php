@@ -26,7 +26,10 @@ class CategoriesController extends Controller
     public function store(CategoryRequest $request)
     {
         $category = $this->categoryRepo->createCategory($request);
-        return response()->json($category, 201);
+        return response()->json([
+            'success' =>true,
+            'message' => $category->category_name.' successfully created'
+        ], 201);
     }
 
     public function show($id)
@@ -41,10 +44,20 @@ class CategoriesController extends Controller
         return response()->json($category, 200);
     }
 
-    public function destroy(Category $category)
+    public function destroy($categoryId)
     {
-        $category = $this->categoryRepo->deleteCategory($category);
-        return response()->json($category, 200);
+        $response = $this->categoryRepo->deleteCategory($categoryId);
+        if ($response){
+            return response()->json([
+                'success' => true,
+                'message' => 'Deleted successfully'
+            ], 200);
+        }else{
+            return response()->json([
+                'success' => false,
+                'message' => 'An error occurred. Please try again.'
+            ], 200);
+        }
     }
 
     public function fetchCategoryDocuments($id)

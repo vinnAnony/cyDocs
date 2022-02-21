@@ -34,10 +34,9 @@ class DepartmentRepository implements DepartmentRepositoryInterface
          return $department->update($request->all());
     }
 
-    public function deleteDepartment(Department $department)
+    public function deleteDepartment($departmentId)
     {
-        /** @var TYPE_NAME $department */
-        return $department->delete($department);
+        return $department = Department::where('id',$departmentId)->delete();
     }
 
     public function fetchDepartmentDocuments($id)

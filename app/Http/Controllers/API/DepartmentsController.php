@@ -26,7 +26,10 @@ class DepartmentsController extends Controller
     public function store(DepartmentRequest $request)
     {
         $department = $this->departmentRepo->createDepartment($request);
-        return response()->json($department, 201);
+        return response()->json([
+            'success' =>true,
+            'message' => $department->department_name.' successfully created'
+        ], 201);
     }
 
     public function show($id)
@@ -41,10 +44,20 @@ class DepartmentsController extends Controller
         return response()->json($department, 200);
     }
 
-    public function destroy(Department $department)
+    public function destroy($departmentId)
     {
-        $department = $this->departmentRepo->deleteDepartment($department);
-        return response()->json($department, 200);
+        $response = $this->departmentRepo->deleteDepartment($departmentId);
+        if ($response){
+            return response()->json([
+                'success' => true,
+                'message' => 'Deleted successfully'
+            ], 200);
+        }else{
+            return response()->json([
+                'success' => false,
+                'message' => 'An error occurred. Please try again.'
+            ], 200);
+        }
     }
 
 }

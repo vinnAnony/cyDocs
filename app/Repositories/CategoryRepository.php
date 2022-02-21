@@ -12,7 +12,7 @@ class CategoryRepository implements CategoryRepositoryInterface
 
     public function allCategories()
     {
-        return Category::with('department')->get();
+        return Category::with('department')->latest()->get();
     }
 
     public function showCategory($id)
@@ -30,10 +30,9 @@ class CategoryRepository implements CategoryRepositoryInterface
         return $category->update($request->all());
     }
 
-    public function deleteCategory(Category $category)
+    public function deleteCategory($categoryId)
     {
-        /** @var TYPE_NAME $category */
-        return $category->delete($category);
+        return $document=Category::where('id',$categoryId)->delete();
     }
 
     public function fetchCategoryDocuments($id)

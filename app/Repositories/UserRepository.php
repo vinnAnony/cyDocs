@@ -14,7 +14,7 @@ class UserRepository implements UserRepositoryInterface
     public function allUsers()
     {
         return User::with('department')
-            ->with('role')
+            ->with('role')->latest()
             ->get();
     }
 

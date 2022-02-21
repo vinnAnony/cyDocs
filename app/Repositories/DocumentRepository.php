@@ -11,7 +11,7 @@ class DocumentRepository implements DocumentRepositoryInterface
 {
     public function allDocuments()
     {
-        return Document::all();
+        return Document::all()->latest();
     }
 
     public function createDocument(DocumentRequest $request)

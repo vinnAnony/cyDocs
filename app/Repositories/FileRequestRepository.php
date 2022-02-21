@@ -17,7 +17,7 @@ class FileRequestRepository implements FileRequestRepositoryInterface
 
     public function allFileRequests()
     {
-        return FileRequest::all();
+        return FileRequest::all()->latest();
     }
 
     public function showFileRequest($id)

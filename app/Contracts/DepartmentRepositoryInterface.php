@@ -18,5 +18,5 @@ interface DepartmentRepositoryInterface
 
     public function updateDepartment(DepartmentRequest $request, Department $department);
 
-    public function deleteDepartment(Department $department);
+    public function deleteDepartment($departmentId);
 }

@@ -39,7 +39,7 @@ Route::middleware('auth:api')->group(function () {
     Route::post('/categories', 'API\CategoriesController@store');
     Route::get('/category/{categoryId}', 'API\CategoriesController@show');
     Route::put('/categories/{category}', 'API\CategoriesController@update');
-    Route::delete('/categories', 'API\CategoriesController@destroy');
+    Route::delete('/categories/{categoryId}', 'API\CategoriesController@destroy');
     Route::get('/category-documents/{categoryId}', 'API\CategoriesController@fetchCategoryDocuments');
     Route::get('/department-categories/{departmentId}', 'API\CategoriesController@fetchDepartmentCategories');
 
@@ -47,7 +47,7 @@ Route::middleware('auth:api')->group(function () {
     Route::post('/departments', 'API\DepartmentsController@store');
     Route::get('/department/{departmentId}', 'API\DepartmentsController@show');
     Route::put('/departments/{department}', 'API\DepartmentsController@update');
-    Route::delete('/departments', 'API\DepartmentsController@destroy');
+    Route::delete('/departments/{departmentId}', 'API\DepartmentsController@destroy');
     Route::get('/department-documents/{departmentId}', 'API\DepartmentsController@fetchDepartmentDocuments');
 
     Route::get('/file-requests', 'API\FileRequestsController@index');
