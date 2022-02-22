@@ -20,24 +20,22 @@ class UserRepository implements UserRepositoryInterface
 
     public function showUser($id)
     {
-        return User::where('id', '=', $id)->first();
+        return User::where('id', $id)->first();
     }
 
-    public function createUser(UserRequest $request)
+    public function createUser($nput)
     {
-        return User::create($request->all());
+        return User::create($nput);
     }
 
-    public function register(UserRequest $request)
+    public function register($input)
     {
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => bcrypt($request->password)
-        ]);
+        $user = User::create($input);
+
         $userData = User::latest()->with('role')->with('department')->first();
 
         $token = $user->createToken('CyDocsToken')->accessToken;
+
         return response()->json([
             'success' => true,
             'message' => 'Successful sign up',
@@ -52,9 +50,13 @@ class UserRepository implements UserRepositoryInterface
             'email' => $request->email,
             'password' => $request->password
         ];
+
         if (auth()->attempt($data)) {
-            $user = User::find(Auth::id())->with('role')->with('department')->first();
+
+            $user = User::where('email',$request->email)->with(['department','role'])->first();
+
             $token = auth()->user()->createToken('CyDocsToken')->accessToken;
+
             return response()->json([
                 'success' => true,
                 'message' => 'Successful login',

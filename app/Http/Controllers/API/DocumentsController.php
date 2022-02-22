@@ -70,7 +70,7 @@ class DocumentsController extends Controller
 
     public function fetchDepartmentCategoryDocuments(Request $request)
     {
-        $response = $this->documentRepo->fetchDepartmentCategoryDocuments($request);
+       return $this->documentRepo->fetchDepartmentCategoryDocuments($request);
     }
 
     public function downloadDocument($documentId)

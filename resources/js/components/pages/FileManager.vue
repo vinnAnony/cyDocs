@@ -31,8 +31,10 @@
                     :loading="isTableLoading"
                     loading-text="Loading documents... Please wait">
                     <template v-slot:item.actions="{ item }">
-                        <font-awesome-icon icon="eye" class="cursor-pointer text-blue-700"/>
-                        <font-awesome-icon icon="download" class="cursor-pointer text-green-700" @click="downloadDocument(item)"/>
+<!--                        <font-awesome-icon icon="eye" class="cursor-pointer text-blue-700"/>-->
+                        <font-awesome-icon icon="download"
+                                           v-if="userRoleId>=2"
+                                           class="cursor-pointer text-green-700" @click="downloadDocument(item)"/>
                         <font-awesome-icon icon="trash" @click="deleteDocument(item)"
                                            v-if="userRoleId>=3"
                                            class="cursor-pointer text-red-700"/>
