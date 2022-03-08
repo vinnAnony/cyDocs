@@ -1,6 +1,6 @@
 const axios = require('axios');
 const url = axios.create({
-    baseURL: 'http://cyDocs.appp/api/',
+    baseURL: '/api/',
     headers: {
         'Accept': 'application/json',
         'Authorization': `Bearer ${JSON.parse(localStorage.getItem('cyDocsToken'))}`
